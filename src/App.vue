@@ -1,32 +1,58 @@
+<style>
+th {
+  font-weight: 500 !important;
+}
+label {
+  font-weight: 500;
+}
+.pointer {
+  cursor: pointer;
+}
+.font-weight-500 {
+  font-weight: 500 !important;
+}
+.modal-title {
+  font-size: 22px;
+}
+.modal-header,
+.modal-footer {
+  justify-content: center;
+  border: none;
+}
+.modal-body {
+  font-weight: 500;
+  font-size: 18px;
+}
+.modal-content {
+  border-radius: 15px !important;
+}
+.modal-footer button {
+  border-radius: 15px;
+  border: none;
+  font-weight: 500;
+}
+.loading {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+</style>
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="loading">
+      <b-spinner variant="primary" v-if="loading"></b-spinner>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import { mapState } from "vuex";
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+@Component({
+  computed: mapState(["loading"]),
+})
+export default class App extends Vue {}
+</script>
